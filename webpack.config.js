@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/app.js',
   mode: 'development',
   output: {
     path: __dirname + '/client',
@@ -18,12 +18,31 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     { loader: 'style-loader' },
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //       },
+      //     },
+      //   ],
+      // },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        // use: [
+        //   { loader: 'style-loader' },
+        //   {
+        //     loader: 'css-loader',
+        //     options: {
+        //       modules: true,
+        //     },
+        //   },
+        //   { loader: 'sass-loader' },
+        // ],
       },
     ],
   },

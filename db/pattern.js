@@ -8,11 +8,14 @@ const Pattern = Sequelize.define('pattern', {
   author: {
     type: Sequelize.STRING,
   },
+  ravelry: {
+    type: Sequelize.STRING,
+  },
   sizes: {
     type: Sequelize.ARRAY(Sequelize.STRING),
   },
 });
 
-Pattern.beforeCreate(); // Validate 
+Pattern.beforeCreate(); // Validate
 
 module.export = Pattern;
