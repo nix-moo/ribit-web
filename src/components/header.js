@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import {
   Header,
   HeaderName,
@@ -28,9 +28,9 @@ const Head = () => {
           <HeaderGlobalAction aria-label="Search" onClick={() => {}}>
             <Search20 />
           </HeaderGlobalAction>
-          <HeaderGlobalAction aria-label="Notifications" onClick={() => {}}>
+          {/* <HeaderGlobalAction aria-label="Notifications" onClick={() => {}}>
             <Notification20 />
-          </HeaderGlobalAction>
+          </HeaderGlobalAction> */}
           <HeaderGlobalAction aria-label="Account Menu" onClick={() => {}}>
             <AppSwitcher20 />
           </HeaderGlobalAction>
