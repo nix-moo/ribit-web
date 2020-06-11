@@ -4,8 +4,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/app.js',
-    lib: './src/lib.js',
+    main: './client/main.js',
+    lib: './client/lib.js',
   },
   mode: 'development',
   output: {
@@ -15,7 +15,7 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.template.html',
+      template: './client/index.template.html',
     }),
   ],
   devServer: {

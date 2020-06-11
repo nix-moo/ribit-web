@@ -8,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/app.js',
+    main: './client/main.js',
     // lib: './src/lib.js',
   },
   mode: 'production',
@@ -21,7 +21,7 @@ module.exports = {
       new OptimizeCssAssetsPlugin(),
       new TerserPlugin(),
       new HtmlWebpackPlugin({
-        template: './src/index.template.html',
+        template: './client/index.template.html',
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
@@ -32,9 +32,6 @@ module.exports = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    // new HtmlWebpackPlugin({
-    //   template: './src/index.template.html',
-    // }),
     new MiniCssExtractPlugin({
       filename: '[name].[contentHash].css',
     }),

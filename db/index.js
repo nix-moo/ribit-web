@@ -6,10 +6,7 @@ const Pattern = require('./pattern');
 const Project = require('./project');
 
 const db = new Sequelize(
-  process.env.DATABASE_URL || 'postgres://localhost:5432/ribit',
-  {
-    logging: false,
-  }
+  process.env.DATABASE_URL || 'postgres://localhost:5432/ribit'
 );
 
 User.hasMany(Pattern);

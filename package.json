@@ -2,7 +2,7 @@
   "name": "ribit-web",
   "version": "1.0.0",
   "description": "browser tool for importing knitting patterns",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "build": "webpack  --config webpack.build.js",
     "dev": "webpack-dev-server  --config webpack.dev.js --open"
@@ -23,7 +23,7 @@
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^6.14.4",
+    "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@carbon/grid": "^10.10.2",
+    "@carbon/themes": "^10.12.0",
     "carbon-components": "^10.12.0",
     "carbon-components-react": "^7.12.0",
     "carbon-icons": "^7.0.7",
