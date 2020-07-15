@@ -24,6 +24,12 @@ export default class PatternText extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('this.state', this.state);
+    console.log(evt);
+    // const newPatternRows = this.split(evt.text)
+  };
+
+  split = (str, ss = '\n\n') => {
+    return str.split(ss);
   };
 
   render() {
@@ -33,6 +39,7 @@ export default class PatternText extends Component {
           <TextArea
             onChange={this.handleChange}
             id="text"
+            name="text"
             invalidText="This field is required."
             labelText="Paste the pattern text here."
             placeholder="1. Row one..."

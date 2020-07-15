@@ -8,9 +8,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './client/main.js',
-    // lib: './src/lib.js',
+    main: './client/app.js',
+    lib: './client/lib.js',
   },
+  target: 'node',
   mode: 'production',
   output: {
     filename: '[name].[contentHash].js',

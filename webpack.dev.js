@@ -4,9 +4,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './client/main.js',
-    lib: './client/lib.js',
+    main: './client/app.js',
+    // lib: './client/lib.js',
   },
+  target: 'node',
   mode: 'development',
   output: {
     filename: '[name].js',

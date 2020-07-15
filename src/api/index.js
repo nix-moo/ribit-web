@@ -1,7 +1,9 @@
 const router = require('express').Router();
 
-router.use('/users', require('./users')); // matches all requests to /api/users/
+const { User, Pattern } = require('../db');
 
+router.use('/users', require('./users')); // matches all requests to /api/users/
+router.use('/patterns', require('./patterns'));
 
 router.use(function (req, res, next) {
   const err = new Error('Not found.');

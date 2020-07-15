@@ -1,13 +1,21 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../client/main.js')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// logging middleware
+const debug = process.env.NODE_ENV === 'test';
+app.use(volleyball.custom({ debug }));
 
+// parsing middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// static middleware
+app.use(express.static(path.join(__dirname, '../client/app.js')));
+
+// routes
 app.use('/api', require('./api'));
 // The only thing after this might be a piece of middleware to serve up 500 errors for server problems. However, if you have middleware to serve up 404s, that go would before this as well
 app.get('*', function (req, res, next) {
@@ -20,7 +28,9 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-const port = process.env.PORT || 3000; // for deploying to Heroku
+
+// for deploying to Heroku
+const port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log('Hi there!');
   console.log(`Your server is listening on port ${port}`);
