@@ -9,6 +9,7 @@ import './app.scss';
 export default class App extends Component {
   render() {
     return (
+
         <Content>
           <Head />
           <PatternUpload />

@@ -27,14 +27,16 @@ const Head = () => {
           Projects
         </HeaderMenuItem>
       </HeaderNavigation>
+      {/*
       <HeaderGlobalBar>
         <HeaderGlobalAction aria-label="Settings" onClick={() => {}}>
-          {/* <AppSwitcher20 /> */}
+          <AppSwitcher20 />
         </HeaderGlobalAction>
         <HeaderGlobalAction aria-label="Account" onClick={() => {}}>
-          {/* <UserAvatar20 /> */}
+          <UserAvatar20 />
         </HeaderGlobalAction>
       </HeaderGlobalBar>
+       */}
     </Header>
   );
 };
