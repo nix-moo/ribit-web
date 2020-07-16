@@ -8,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './client/app.js',
+    main: './client/index.js',
     lib: './client/lib.js',
   },
   target: 'node',
