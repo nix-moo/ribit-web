@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "build": "webpack  --config webpack.build.js",
-    "dev": "webpack-dev-server  --config webpack.dev.js --open"
+    "dev": "webpack-dev-server  --config webpack.dev.js --open",
+    "seed": "node helper/seed.js"
   },
   "author": "nix-moo",
   "license": "ISC",

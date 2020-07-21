@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
+const db = require('../db');
 
-const Project = Sequelize.define('project', {
+const Project = db.define('project', {
   size: {
     type: Sequelize.STRING,
   },
@@ -19,6 +20,6 @@ const Project = Sequelize.define('project', {
   },
 });
 
-Project.beforeUpdate(); //Calculate the new progress percentage
+// Project.beforeUpdate(); //Calculate the new progress percentage
 
-module.export = Project;
+module.exports = Project;

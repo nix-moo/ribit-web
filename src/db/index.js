@@ -1,15 +1,6 @@
 const Sequelize = require('sequelize');
+const db = require('./db.js')
 
-const db = new Sequelize(
-  process.env.DATABASE_URL || 'postgres://localhost:5432/ribit',
-  {
-    logging: false,
-  }
-);
+require('./models');
 
 module.exports = db;
-
-// global Mocha hook used for resource cleanup.
-if (process.env.NODE_ENV === 'test') {
-  after('close database connection', () => db.close());
-}

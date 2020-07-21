@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
+const db = require('../db');
 
-const Pattern = Sequelize.define('pattern', {
+const Pattern = db.define('pattern', {
   title: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -16,6 +17,6 @@ const Pattern = Sequelize.define('pattern', {
   },
 });
 
-Pattern.beforeCreate(); // Validate
+// Pattern.beforeCreate(); // Validate
 
-module.export = Pattern;
+module.exports = Pattern;

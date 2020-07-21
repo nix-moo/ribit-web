@@ -1,6 +1,11 @@
 const Sequelize = require('sequelize');
+const db = require('../db');
 
-const Row = Sequelize.define('row', {
+const Row = db.define('row', {
+  num: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
   text: {
     type: Sequelize.TEXT,
     allowNull: false,
@@ -16,4 +21,4 @@ const Row = Sequelize.define('row', {
   },
 });
 
-module.export = Row;
+module.exports = Row;

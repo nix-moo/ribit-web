@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const { Pattern, Row, Project, User } = require('../db/models');
-const {
-  adminsOnly,
-  matchingUserOrAdmin,
-  isLoggedIn,
-} = require('./permissions');
+// const {
+//   adminsOnly,
+//   matchingUserOrAdmin,
+//   isLoggedIn,
+// } = require('./permissions');
 
 module.exports = router;
 
-router.get('/', isLoggedIn, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const allPatterns = await Pattern.findAll({
       where: { userId: req.user.id },
@@ -20,7 +20,7 @@ router.get('/', isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post('/', isLoggedIn, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     const formData = {};
     if (req.body.title) {

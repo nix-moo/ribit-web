@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+// import { Route, Switch } from 'react-router-dom';
 import { Content } from 'carbon-components-react/lib/components/UIShell';
 import Head from './components/header';
 import PatternUpload from './view/pattern_upload';
-// import LandingPage from './view/landing';
+import LandingPage from './view/landing';
+
 import './app.scss';
 
 export default class App extends Component {
@@ -13,6 +14,7 @@ export default class App extends Component {
         <Content>
           <Head />
           <PatternUpload />
+          <LandingPage />
         </Content>
     );
   }
