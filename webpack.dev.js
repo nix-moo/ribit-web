@@ -3,10 +3,10 @@ const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    main: './client/index.js',
-    // lib: './client/lib.js',
-  },
+  entry: [
+    '@babel/polyfill', // enables async-await
+    './client/index.js',
+  ],
   target: 'node',
   mode: 'development',
   devtool: 'source-map',
@@ -33,11 +33,9 @@ module.exports = {
         use: ['html-loader'],
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
