@@ -7,10 +7,12 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: {
-    main: './client/index.js',
+  entry: [
+    '@babel/polyfill', // enables async-await
+    './client/index.js',
+    // main: './client/index.js',
     // lib: './client/lib.js',
-  },
+  ],
   target: 'node',
   mode: 'production',
   output: {
@@ -47,7 +49,7 @@ module.exports = {
         },
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',

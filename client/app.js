@@ -4,13 +4,13 @@ import React from 'react';
 // import './app.scss'
 
 import { Content } from 'carbon-components-react/lib/components/UIShell';
-import { Navbar } from './components';
+import { Header } from './components';
 import Routes from './routes';
 
 const App = () => {
   return (
     <>
-      <Navbar />
+      <Header />
       <Content>
         <Routes />
       </Content>

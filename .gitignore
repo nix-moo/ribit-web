@@ -3,3 +3,6 @@ build
 main.js
 main.js.map
 secrets.js
+.vscode
+.DS_Store
+.prettierignore
