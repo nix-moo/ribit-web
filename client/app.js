@@ -5,17 +5,16 @@ import Head from './components/header';
 import PatternUpload from './view/pattern_upload';
 import LandingPage from './view/landing';
 
-import './app.scss';
+// import './app.scss';
 
 export default class App extends Component {
   render() {
     return (
-
-        <Content>
-          <Head />
-          <PatternUpload />
-          <LandingPage />
-        </Content>
+      <Content>
+        <Head />
+        <PatternUpload />
+        <LandingPage />
+      </Content>
     );
   }
 }

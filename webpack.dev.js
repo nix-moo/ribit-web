@@ -9,6 +9,10 @@ module.exports = {
   },
   target: 'node',
   mode: 'development',
+  devtool: 'source-map',
+  watchOptions: {
+    ignored: /node_modules/,
+  },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),

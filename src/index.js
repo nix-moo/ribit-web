@@ -1,126 +1,30 @@
-// const http = require('http');
-// const app = require('./app');
-// const server = http.createServer(app);
-
-const path = require('path');
 const express = require('express');
-const volleyball = require('volleyball');
-const compression = require('compression');
-const session = require('express-session');
-const passport = require('passport');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const path = require('path');
+// const volleyball = require('volleyball');
+
 const db = require('./db');
-const sessionStore = new SequelizeStore({ db });
-const PORT = process.env.PORT || 3000;
+db.sync();
+
+const PORT = 3000; // || process.env.PORT;
 const app = express();
-const socketio = require('socket.io');
 
-module.exports = app;
+// app.use(volleyball());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// global Mocha hook for resource cleanup
-if (process.env.NODE_ENV === 'test') {
-  after('close the session store', () => sessionStore.stopExpiringSessions());
-}
+app.use('/api', require('./api'));
 
-/**
- * In your development environment, keep API keys in a file called `secrets.js`,
- * in project root. This is included in the .gitignore. On your production
- * server, you can add these keys as environment variables, so that they can
- * still be read by the Node process on process.env
- */
-if (process.env.NODE_ENV !== 'production') require('../secrets');
+app.use(express.static(path.resolve(__dirname, '../public')));
 
-// passport registration
-passport.serializeUser((user, done) => done(null, user.id));
-
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await db.models.user.findByPk(id);
-    done(null, user);
-  } catch (err) {
-    done(err);
-  }
+app.use('/', (req, res, next) => {
+  res.sendFile(path.join(__dirname, './index.html'));
 });
 
-const createApp = () => {
-  // logging middleware
-  app.use(volleyball());
+app.use((err, req, res, next) => {
+  console.error(err, err.stack);
+  res.status(500).send(err.message);
+});
 
-  // body parsing middleware
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
+app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`));
 
-  // compression middleware
-  app.use(compression());
-
-  // session middleware with passport
-  app.use(
-    session({
-      secret: process.env.SESSION_SECRET || 'Codey is my best guy!',
-      store: sessionStore,
-      resave: false,
-      saveUninitialized: false,
-    })
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  // auth and api routes
-  // app.use('/auth', require('./auth'));
-  app.use('/api', require('./api'));
-
-  // static file-serving middleware
-  // app.use(express.static(path.join(__dirname, '..', 'public')));
-
-  // any remaining requests with an extension (.js, .css, etc.) send 404
-  app.use((req, res, next) => {
-    if (path.extname(req.path).length) {
-      const err = new Error('Not found');
-      err.status = 404;
-      next(err);
-    } else {
-      next();
-    }
-  });
-
-  // sends index.html
-  app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'));
-  });
-
-  // error handling endware
-  app.use((err, req, res, next) => {
-    console.error(err);
-    console.error(err.stack);
-    res.status(err.status || 500).send(err.message || 'Internal server error.');
-  });
-};
-
-const startListening = () => {
-  // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`)
-  );
-
-  // set up our socket control center
-  const io = socketio(server);
-  require('./socket')(io);
-};
-
-const syncDb = () => db.sync();
-
-async function bootApp() {
-  await sessionStore.sync();
-  await syncDb();
-  await createApp();
-  await startListening();
-}
-// This evaluates as true when this file is run directly from the command line,
-// i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
-// It will evaluate false when this module is required by another module - for example,
-// if we wanted to require our app in a test spec
-if (require.main === module) {
-  bootApp();
-} else {
-  createApp();
-}
+module.exports = app;

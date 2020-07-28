@@ -6,15 +6,20 @@ const { Pattern, Row, Project, User } = require('../db/models');
 //   isLoggedIn,
 // } = require('./permissions');
 
-module.exports = router;
+// module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
-    const allPatterns = await Pattern.findAll({
-      where: { userId: req.user.id },
-    });
-
-    res.json(allPatterns);
+    const allPatterns = await Pattern.findAll();
+    //   {
+    //   // where: { userId: req.user.id },
+    // }
+    // ();
+    if (allPatterns) {
+      res.json(allPatterns);
+    } else {
+      res.send('no db response');
+    }
   } catch (error) {
     next(error);
   }
