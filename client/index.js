@@ -1,24 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
+import history from './history';
+import store from './store';
 import App from './app';
-import './app.scss';
 
-ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
-  document.getElementById('app')
-);
+// establishes socket connection
+import './socket';
 
-// If I end up using Redux again, I'll use these.
+// Carbon scss
+import './index.scss';
 
-// import {Provider} from 'react-redux'
-// import history from './history'
-// import store from './store'
-
-/*
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
@@ -26,5 +19,4 @@ ReactDOM.render(
     </Router>
   </Provider>,
   document.getElementById('app')
-)
- */
+);
