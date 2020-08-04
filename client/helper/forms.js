@@ -1,3 +1,7 @@
-export function split(str, ss = '\n\n') {
-  return str.split(ss);
+export function splitNtrim(str, ss = '\n+') {
+  let res = str.split(ss).map(substr => {
+    substr.trim()
+  })
+  return res;
 }
+

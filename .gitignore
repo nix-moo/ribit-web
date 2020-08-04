@@ -5,4 +5,5 @@ main.js.map
 secrets.js
 .vscode
 .DS_Store
-.prettierignore
+.prettier*
+.eslint*
