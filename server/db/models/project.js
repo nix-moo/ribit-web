@@ -20,6 +20,7 @@ const Project = db.define('project', {
   },
 });
 
-// Project.beforeUpdate(); //Calculate the new progress percentage
+//Calculate the new progress percentage
+// Project.beforeUpdate();
 
 module.exports = Project;

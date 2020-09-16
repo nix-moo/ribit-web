@@ -1,5 +1,4 @@
 import React from 'react';
-
 // Carbon stylesheet
 // import './app.scss'
 

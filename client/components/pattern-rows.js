@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-state */
-import React, { Component } from 'react'
+import React from 'react'
 import { Form, FormGroup, TextArea, Button } from 'carbon-components-react'
 import '../app.scss'
 
@@ -39,3 +39,4 @@ export const PatternRows = props => {
     </Form>
   )
 }
+

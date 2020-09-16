@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const db = require('../db');
+const Sequelize = require('sequelize')
+const db = require('../db')
 
 const Row = db.define('row', {
   num: {
@@ -19,6 +19,9 @@ const Row = db.define('row', {
       isIn: [['inside', 'outside', 'round']],
     },
   },
-});
+  section: {
+    type: Sequelize.INTEGER,
+  },
+})
 
-module.exports = Row;
+module.exports = Row
