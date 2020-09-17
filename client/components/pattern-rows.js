@@ -40,3 +40,4 @@ export const PatternRows = props => {
   )
 }
 
+export default PatternRows

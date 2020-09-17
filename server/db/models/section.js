@@ -7,7 +7,7 @@ const Section = db.define('section', {
     type: Sequelize.STRING,
   },
   size: {
-    type: Sequelize.ENUM,
+    type: Sequelize.STRING,
     allowNull: FALSE,
   },
   reps: {

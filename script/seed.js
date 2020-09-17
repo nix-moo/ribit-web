@@ -2,10 +2,10 @@
 
 const testData = require('./testData')
 const db = require('../server/db')
-const {User, Pattern, Row} = require('../server/db/models')
+const { User, Pattern, Row, Section } = require('../server/db/models')
 
 async function seed() {
-  await db.sync({force: true})
+  await db.sync({ force: true })
   console.log('db synced!')
 
   const users = await Promise.all([
@@ -13,9 +13,9 @@ async function seed() {
       name: 'Codey',
       email: 'codey@email.com',
       password: '123',
-      isAdmin: true
+      isAdmin: true,
     }),
-    User.create({name: 'Kona', email: 'kona@email.com', password: '123'})
+    User.create({ name: 'Kona', email: 'kona@email.com', password: '123' }),
   ])
 
   const regex = /\W+/g
@@ -26,21 +26,26 @@ async function seed() {
     title: testData.title,
     author: testData.author,
     sizes: sizeArr,
-    ravelry: testData.ravelry
+    ravelry: testData.ravelry,
   })
 
   await users[0].addPattern(pattern)
 
+  const section = await Section.create({
+    title: 'sleves',
+    size: '1',
+    reps: 2,
+  })
 
-  console.log('typeof sizeArr', typeof sizeArr)
+  await pattern.addSection(section)
 
   const rows = await Promise.all(
     testData.rows.map(async row => {
-      const newRow = await Row.create({...row})
+      const newRow = await Row.create({ ...row })
       return newRow
     })
   )
-  await pattern.addRows(rows)
+  await section.addRows(rows)
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)

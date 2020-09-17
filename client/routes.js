@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Login, Signup, UserHome, PatternInfo, PatternRows } from './components'
+import { Login, Signup, UserHome, PatternInfo, PatternRows, PatternUpload } from './components'
 import { me } from './store'
 
 /**
@@ -23,7 +23,8 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
-            <Route path="/pattern-upload" component={PatternInfo} />
+            <Route path="/pattern-upload" component={PatternUpload} />
+            <Route path="/pattern-create" component={PatternInfo} />
             <Route path="/pattern-rows" component={PatternRows} />
           </Switch>
         )}

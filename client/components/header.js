@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import {
   Header,
   HeaderName,
@@ -8,16 +8,16 @@ import {
   HeaderGlobalBar,
   HeaderNavigation,
   HeaderMenuItem,
-  SkipToContent
+  SkipToContent,
 } from 'carbon-components-react/lib/components/UIShell'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import { Link } from 'react-router-dom'
+import { logout } from '../store'
 
 import UserAvatar20 from '@carbon/icons-react/lib/user--avatar/20'
 import Wheat32 from '@carbon/icons-react/lib/wheat/32'
 // import AppSwitcher20 from '@carbon/icons-react/lib/app-switcher/20'
 
-const Header = ({handleClick, isLoggedIn}) => (
+const myHeader = ({ handleClick, isLoggedIn }) => (
   <>
     <Header aria-label="header">
       <SkipToContent />
@@ -31,11 +31,18 @@ const Header = ({handleClick, isLoggedIn}) => (
             Home
           </HeaderMenuItem>
           <HeaderMenuItem element={Link} to="/pattern-upload">
-            Add Pattern
+            Upload Pattern
+          </HeaderMenuItem>
+          <HeaderMenuItem element={Link} to="/pattern-create">
+            Create Pattern
           </HeaderMenuItem>
         </HeaderNavigation>
       ) : (
-        <HeaderNavigation></HeaderNavigation>
+        <HeaderNavigation>
+          <HeaderMenuItem element={Link} to="/login">
+            Login
+          </HeaderMenuItem>
+        </HeaderNavigation>
       )}
       {isLoggedIn ? (
         <HeaderGlobalBar>
@@ -64,7 +71,7 @@ const Header = ({handleClick, isLoggedIn}) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   }
 }
 
@@ -72,16 +79,16 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
-    }
+    },
   }
 }
 
-export default connect(mapState, mapDispatch)(Header)
+export default connect(mapState, mapDispatch)(myHeader)
 
 /**
  * PROP TYPES
  */
-Header.propTypes = {
+myHeader.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
 }

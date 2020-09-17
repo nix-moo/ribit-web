@@ -19,9 +19,6 @@ const Row = db.define('row', {
       isIn: [['inside', 'outside', 'round']],
     },
   },
-  section: {
-    type: Sequelize.INTEGER,
-  },
 })
 
 module.exports = Row
