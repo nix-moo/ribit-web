@@ -71,7 +71,7 @@
     "@carbon/elements": "^10.18.0",
     "@carbon/grid": "^10.15.0",
     "@carbon/themes": "^10.18.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "carbon-components": "^10.19.0",
     "carbon-components-react": "^7.19.0",
     "carbon-icons": "^7.0.7",
