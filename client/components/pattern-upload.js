@@ -13,7 +13,7 @@ const PatternUpload = () => {
 
   return (
     <>
-    <div bx--col-md-6 bx--col-lg-6>
+    <div className="bx--col-md-6 bx--col-lg-6">
       <h1>File Upload</h1>
     </div>
     <div className="bx--file__container bx--col-md-6 bx--col-lg-6">

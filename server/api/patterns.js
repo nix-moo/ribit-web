@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Pattern, Row, Project, User } = require('../db/models');
+const { Pattern, Section, Row, Project, User } = require('../db/models');
 // const {
 //   adminsOnly,
 //   matchingUserOrAdmin,
@@ -39,7 +39,7 @@ router.get('/:id', async (req, res, next) => {
         id: req.params.id,
       },
       include: {
-        model: Row,
+        model: Section,
       },
     });
 
