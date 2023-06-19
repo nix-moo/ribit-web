@@ -84,3 +84,18 @@ router.post('/', async (req, res, next) => {
     next(error);
   }
 });
+
+router.get('/:userId/:projectId', async (req, res, next) =>{
+  try {
+    const project = await Project.findOne({
+      where: {
+        userId: req.params.user,
+        projectId: req.params.id
+      }
+    });
+
+    res.json(project);
+  } catch (error) {
+    next(error);
+  }
+})

@@ -14,6 +14,9 @@ const Section = db.define('section', {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+  rows: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER)
+  }
 })
 
 module.exports = Section

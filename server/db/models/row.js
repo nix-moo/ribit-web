@@ -19,6 +19,9 @@ const Row = db.define('row', {
       isIn: [['inside', 'outside', 'round']],
     },
   },
+  sum: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER)
+  }
 })
 
 module.exports = Row

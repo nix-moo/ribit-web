@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: ribIt API
+  description: basic api
+paths:
+  /:
+    get:
+      description: Returns a list of stuff
+      responses:
+        '200':
+          description: Successful response
+
